@@ -1,0 +1,922 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="MaisConsulta.AI - Plataforma completa de gestão para clínicas e consultórios com Inteligência Artificial. Agende demonstração gratuita.">
+    <title>MaisConsulta.AI - Gestão Inteligente para Clínicas</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: hsl(250, 95%, 63%);
+            --primary-light: hsl(250, 95%, 70%);
+            --purple-600: hsl(270, 70%, 50%);
+            --blue-600: hsl(220, 80%, 50%);
+            --background: hsl(0, 0%, 100%);
+            --foreground: hsl(222, 84%, 5%);
+            --card: hsl(0, 0%, 100%);
+            --secondary: hsl(220, 14%, 96%);
+            --muted: hsl(215, 16%, 47%);
+            --border: hsl(214, 32%, 91%);
+            --whatsapp: #25D366;
+            --pink: hsl(340, 80%, 55%);
+            --radius: 1rem;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(180deg, var(--background), var(--secondary));
+            color: var(--foreground);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 50;
+            border-bottom: 1px solid var(--border);
+        }
+
+        header .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem;
+        }
+
+        header img {
+            height: 40px;
+        }
+
+        nav {
+            display: none;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        nav a {
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--foreground);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        nav a:hover {
+            color: var(--primary);
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            border-radius: var(--radius);
+            font-weight: 600;
+            font-size: 1rem;
+            text-decoration: none;
+            cursor: pointer;
+            border: none;
+            transition: all 0.2s;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-light);
+        }
+
+        .btn-whatsapp {
+            background: var(--whatsapp);
+            color: white;
+        }
+
+        .btn-whatsapp:hover {
+            background: #20bd5a;
+        }
+
+        .btn-whatsapp img {
+            width: 24px;
+            height: 24px;
+        }
+
+        .btn-lg {
+            padding: 1rem 2rem;
+            font-size: 1.125rem;
+        }
+
+        /* Hero */
+        .hero {
+            padding: 8rem 1rem 5rem;
+        }
+
+        .hero .container {
+            display: grid;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            border-radius: 9999px;
+            background: rgba(99, 102, 241, 0.1);
+            color: var(--primary);
+            font-size: 0.875rem;
+            font-weight: 500;
+            border: 1px solid rgba(99, 102, 241, 0.2);
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin: 1.5rem 0;
+        }
+
+        .hero h1 span {
+            background: linear-gradient(90deg, var(--primary), var(--purple-600), var(--blue-600));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--muted);
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-icons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .hero-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .hero-icon:hover {
+            transform: scale(1.1);
+        }
+
+        .hero-icon.whatsapp {
+            background: rgba(37, 211, 102, 0.1);
+        }
+
+        .hero-icon.calendar {
+            background: rgba(99, 102, 241, 0.1);
+        }
+
+        .hero-icon.instagram {
+            background: rgba(236, 72, 153, 0.1);
+        }
+
+        .hero-icon svg {
+            width: 28px;
+            height: 28px;
+        }
+
+        .hero-image img {
+            width: 100%;
+            border-radius: 1.5rem;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+
+        /* Sections */
+        section {
+            padding: 5rem 1rem;
+        }
+
+        .section-bg {
+            background: linear-gradient(180deg, var(--card), var(--background));
+        }
+
+        .section-card-bg {
+            background: var(--card);
+        }
+
+        .section-badge {
+            display: inline-block;
+            padding: 0.375rem 1rem;
+            border-radius: 9999px;
+            background: rgba(99, 102, 241, 0.1);
+            color: var(--primary);
+            font-size: 0.875rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+
+        h2 {
+            font-size: 2rem;
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        /* Cards */
+        .card {
+            background: rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(10px);
+            border-radius: var(--radius);
+            padding: 1.5rem;
+            transition: all 0.3s;
+            border: 1px solid var(--border);
+        }
+
+        .card:hover {
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+            transform: translateY(-4px);
+        }
+
+        .card-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 0.75rem;
+            background: linear-gradient(135deg, var(--primary), var(--purple-600));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+            transition: transform 0.3s;
+        }
+
+        .card:hover .card-icon {
+            transform: scale(1.1);
+        }
+
+        .card-icon svg {
+            width: 24px;
+            height: 24px;
+            color: white;
+        }
+
+        .card h3 {
+            font-size: 1.125rem;
+            font-weight: 700;
+            margin-bottom: 0.25rem;
+        }
+
+        .card p {
+            font-size: 0.875rem;
+            color: var(--muted);
+        }
+
+        .grid-4 {
+            display: grid;
+            gap: 1rem;
+        }
+
+        .grid-3 {
+            display: grid;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        /* Solution Cards */
+        .solution-card {
+            background: var(--card);
+            border-radius: var(--radius);
+            padding: 1.5rem;
+            border: 1px solid var(--border);
+            transition: box-shadow 0.3s;
+        }
+
+        .solution-card:hover {
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        .solution-card svg {
+            width: 40px;
+            height: 40px;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .solution-card h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .solution-card p {
+            color: var(--muted);
+        }
+
+        .grid-solution {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        /* Benefits */
+        .benefits-grid {
+            display: grid;
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .benefit-number {
+            font-size: 3rem;
+            font-weight: 800;
+            background: linear-gradient(90deg, var(--primary), var(--purple-600));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.75rem;
+        }
+
+        .benefit-text {
+            color: var(--muted);
+        }
+
+        /* Steps */
+        .step-card {
+            background: var(--card);
+            border-radius: var(--radius);
+            padding: 1.5rem;
+            border: 1px solid var(--border);
+            border-left: 4px solid var(--primary);
+        }
+
+        .step-card h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+        }
+
+        .step-card p {
+            color: var(--muted);
+        }
+
+        .steps-grid {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        /* Testimonials */
+        .testimonial-card {
+            background: var(--card);
+            border-radius: var(--radius);
+            padding: 1.5rem;
+            border: 1px solid var(--border);
+        }
+
+        .testimonial-card img {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            margin-bottom: 1rem;
+        }
+
+        .testimonial-card p {
+            color: var(--muted);
+            margin-bottom: 1rem;
+        }
+
+        .testimonial-card strong {
+            display: block;
+        }
+
+        .testimonial-card span {
+            font-size: 0.875rem;
+            color: var(--muted);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .testimonials-footer {
+            text-align: center;
+            font-size: 1.125rem;
+            font-weight: 700;
+        }
+
+        /* FAQ */
+        .faq-container {
+            max-width: 768px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: var(--card);
+            border-radius: var(--radius);
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            border: 1px solid var(--border);
+        }
+
+        .faq-question {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 1.25rem;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        .faq-question svg {
+            width: 20px;
+            height: 20px;
+            transition: transform 0.3s;
+        }
+
+        .faq-item.open .faq-question svg {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            display: none;
+            color: var(--muted);
+            margin-top: 1rem;
+        }
+
+        .faq-item.open .faq-answer {
+            display: block;
+        }
+
+        /* CTA */
+        .cta {
+            text-align: center;
+        }
+
+        .cta h2 {
+            margin-bottom: 2rem;
+        }
+
+        .cta-note {
+            font-size: 0.875rem;
+            color: var(--muted);
+            margin-top: 1.5rem;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--foreground);
+            color: var(--background);
+            padding: 3rem 1rem;
+            text-align: center;
+        }
+
+        .footer-social {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-social svg {
+            width: 28px;
+            height: 28px;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+
+        .footer-social svg:hover {
+            color: var(--primary);
+        }
+
+        .footer-info {
+            font-size: 0.875rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-info p {
+            margin-bottom: 0.25rem;
+        }
+
+        .footer-copy {
+            font-size: 0.875rem;
+        }
+
+        /* WhatsApp Float */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 1.5rem;
+            right: 1.5rem;
+            width: 64px;
+            height: 64px;
+            z-index: 50;
+            transition: transform 0.2s;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+        }
+
+        .whatsapp-float img {
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Responsive */
+        @media (min-width: 768px) {
+            nav {
+                display: flex;
+            }
+
+            .hero .container {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .hero h1 {
+                font-size: 3.5rem;
+            }
+
+            h2 {
+                font-size: 2.5rem;
+            }
+
+            .grid-4 {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .grid-3 {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .grid-solution {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .benefits-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .steps-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .testimonials-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .hero h1 {
+                font-size: 4rem;
+            }
+
+            .grid-4 {
+                grid-template-columns: repeat(4, 1fr);
+            }
+
+            .grid-solution {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .benefits-grid {
+                grid-template-columns: repeat(5, 1fr);
+            }
+
+            .steps-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <img src="logo-mais-consulta.png" alt="Mais Consulta">
+            <nav>
+                <a href="#solucao">Plataforma</a>
+                <a href="#beneficios">Benefícios</a>
+                <a href="#como-funciona">Como Funciona</a>
+                <a href="https://wa.me/5511942224561" target="_blank" class="btn btn-whatsapp">
+                    <img src="whatsapp-icon.png" alt="WhatsApp">
+                    Falar no WhatsApp
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <span class="hero-badge">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/><path d="M5 3v4"/><path d="M19 17v4"/><path d="M3 5h4"/><path d="M17 19h4"/></svg>
+                    IA para Clínicas e Consultórios
+                </span>
+                <h1>Transforme a Gestão da Sua Clínica com <span>Inteligência Artificial</span></h1>
+                <p>Plataforma completa de gestão para profissionais da saúde que querem mais tempo para cuidar de pacientes.</p>
+                <a href="https://wa.me/5511942224561" target="_blank" class="btn btn-primary btn-lg">Agendar Demonstração Gratuita</a>
+                <div class="hero-icons">
+                    <a href="https://wa.me/5511942224561" target="_blank" class="hero-icon whatsapp">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+                    </a>
+                    <div class="hero-icon calendar">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg>
+                    </div>
+                    <div class="hero-icon instagram">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="var(--pink)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="hero-phone.png" alt="App MaisConsulta">
+            </div>
+        </div>
+    </section>
+
+    <!-- Problemas -->
+    <section class="section-bg">
+        <div class="container">
+            <div style="text-align: center;">
+                <span class="section-badge">Desafios Comuns</span>
+                <h2>Reconhece Esses Desafios no Seu Dia a Dia?</h2>
+            </div>
+            <div class="grid-4">
+                <div class="card">
+                    <div class="card-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/><path d="m9 16 2 2 4-4"/></svg>
+                    </div>
+                    <h3>Agenda desorganizada</h3>
+                    <p>Conflitos de horários e falta de controle</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" x2="12" y1="2" y2="22"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                    </div>
+                    <h3>Gestão de pagamentos</h3>
+                    <p>Dificuldade em cobrar e organizar receitas</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+                    </div>
+                    <h3>Equipe despreparada</h3>
+                    <p>Sem treinamento adequado para atendimento</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                    </div>
+                    <h3>Perda de pacientes</h3>
+                    <p>Falta de follow-up e acompanhamento</p>
+                </div>
+            </div>
+            <div class="grid-3">
+                <div class="card">
+                    <div class="card-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/></svg>
+                    </div>
+                    <h3>Burocracia excessiva</h3>
+                    <p>Tempo perdido com tarefas administrativas</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" x2="12" y1="2" y2="22"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                    </div>
+                    <h3>Controle financeiro</h3>
+                    <p>Ausência de visão clara das finanças</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22v-5"/><path d="M9 8V2"/><path d="M15 8V2"/><path d="M18 8v5a4 4 0 0 1-4 4h-4a4 4 0 0 1-4-4V8Z"/></svg>
+                    </div>
+                    <h3>Escalar atendimento</h3>
+                    <p>Dificuldade em crescer de forma organizada</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solução -->
+    <section id="solucao">
+        <div class="container">
+            <h2>Gestão Integrada e Inteligente em Uma Única Plataforma</h2>
+            <div class="grid-solution">
+                <div class="solution-card">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                    <h3>CRM de pacientes</h3>
+                    <p>Histórico completo, acompanhamento de tratamentos e lembretes automáticos.</p>
+                </div>
+                <div class="solution-card">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/><path d="m9 16 2 2 4-4"/></svg>
+                    <h3>Agenda inteligente</h3>
+                    <p>Integração WhatsApp, Instagram e Web. Reduza faltas com confirmações automáticas.</p>
+                </div>
+                <div class="solution-card">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" x2="12" y1="2" y2="22"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                    <h3>Gestão financeira</h3>
+                    <p>Cobrança automatizada, faturamento organizado e relatórios em tempo real.</p>
+                </div>
+                <div class="solution-card">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/></svg>
+                    <h3>Documentos digitais</h3>
+                    <p>Receituário, atestados e assinaturas digitais integradas.</p>
+                </div>
+                <div class="solution-card">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+                    <h3>Treinamento de equipe</h3>
+                    <p>Capacitação para recepcionistas e roteiros de atendimento.</p>
+                </div>
+                <div class="solution-card">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22v-5"/><path d="M9 8V2"/><path d="M15 8V2"/><path d="M18 8v5a4 4 0 0 1-4 4h-4a4 4 0 0 1-4-4V8Z"/></svg>
+                    <h3>Integrações</h3>
+                    <p>WhatsApp Business, Instagram Direct e Google Agenda.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefícios -->
+    <section id="beneficios" class="section-card-bg">
+        <div class="container">
+            <h2>O que você ganha com a MaisConsulta.AI</h2>
+            <div class="benefits-grid">
+                <div>
+                    <div class="benefit-number">4x</div>
+                    <p class="benefit-text">mais agendamentos com follow-up inteligente</p>
+                </div>
+                <div>
+                    <div class="benefit-number">80%</div>
+                    <p class="benefit-text">menos faltas com confirmações automáticas</p>
+                </div>
+                <div>
+                    <div class="benefit-number">24/7</div>
+                    <p class="benefit-text">atendimento automático com agentes de IA</p>
+                </div>
+                <div>
+                    <div class="benefit-number">∞</div>
+                    <p class="benefit-text">horas economizadas com automação total</p>
+                </div>
+                <div>
+                    <div class="benefit-number">100%</div>
+                    <p class="benefit-text">organização centralizada em um único sistema</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Como Funciona -->
+    <section id="como-funciona">
+        <div class="container">
+            <h2>Ativação em até 5 dias após cadastros das informações</h2>
+            <div class="steps-grid">
+                <div class="step-card">
+                    <h3>Passo 1</h3>
+                    <p>Cadastro das informações da clínica.</p>
+                </div>
+                <div class="step-card">
+                    <h3>Passo 2</h3>
+                    <p>Configuração personalizada do atendimento.</p>
+                </div>
+                <div class="step-card">
+                    <h3>Passo 3</h3>
+                    <p>Treinamento da equipe.</p>
+                </div>
+                <div class="step-card">
+                    <h3>Passo 4</h3>
+                    <p>Comece a atender melhor.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Depoimentos -->
+    <section class="section-card-bg">
+        <div class="container">
+            <h2>Profissionais de Saúde que Já Transformaram Seu Atendimento</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Carolina Ribeiro">
+                    <p>"Finalmente uma plataforma que entende a realidade da minha clínica. Organizou minha agenda e reduziu muito as faltas."</p>
+                    <strong>Carolina Ribeiro</strong>
+                    <span>Fisioterapeuta</span>
+                </div>
+                <div class="testimonial-card">
+                    <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Dr. Lucas Azevedo">
+                    <p>"Meu consultório ficou muito mais eficiente. O financeiro e a agenda agora funcionam perfeitamente."</p>
+                    <strong>Dr. Lucas Azevedo</strong>
+                    <span>Odontologista</span>
+                </div>
+                <div class="testimonial-card">
+                    <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Aline Fernandes">
+                    <p>"A IA ajuda a manter um contato constante com os pacientes. Cresci muito no retorno e novos agendamentos."</p>
+                    <strong>Aline Fernandes</strong>
+                    <span>Psicóloga</span>
+                </div>
+            </div>
+            <p class="testimonials-footer">100+ projetos com IA para empresas entregues</p>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section>
+        <div class="container faq-container">
+            <h2>Perguntas Frequentes</h2>
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    É difícil implementar?
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                </div>
+                <div class="faq-answer">Não! Fazemos toda a ativação para você em até 5 dias.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    Quanto tempo leva para treinar a equipe?
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                </div>
+                <div class="faq-answer">Entre 1 e 2 horas, com materiais e suporte incluso.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    Os dados são seguros?
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                </div>
+                <div class="faq-answer">Sim. Seguimos 100% as normas da LGPD.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    Funciona para qualquer tipo de clínica?
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                </div>
+                <div class="faq-answer">Sim, incluindo: odontologia, estética, fisioterapia, psicologia, nutrição, dermatologia e mais.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    Qual o investimento?
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                </div>
+                <div class="faq-answer">Modelos flexíveis conforme o tamanho da clínica, sem implantação cara.</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Final -->
+    <section class="section-card-bg cta">
+        <div class="container" style="max-width: 600px;">
+            <h2>Pronto para revolucionar sua Clínica?</h2>
+            <a href="https://wa.me/5511942224561" target="_blank" class="btn btn-whatsapp btn-lg">
+                <img src="whatsapp-icon.png" alt="WhatsApp">
+                Falar com um especialista
+            </a>
+            <p class="cta-note">Sem compromisso • Ativação em até 5 dias • LGPD compliant</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-social">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
+            </div>
+            <div class="footer-info">
+                <p><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="24474b4a5045504b6449454d57474b4a57514850450a454d">[email&#160;protected]</a></p>
+                <p>R. João de Lacerda Soares, 31 - Sala 1419, Cond. Air Brooklin • Jardim das Acácias, São Paulo-SP • CEP 04.707-010</p>
+            </div>
+            <p class="footer-copy">© 2025 MaisConsulta.AI – Todos os direitos reservados</p>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Flutuante -->
+    <a href="https://wa.me/5511942224561" target="_blank" class="whatsapp-float" aria-label="Conversar no WhatsApp">
+        <img src="whatsapp-icon.png" alt="WhatsApp">
+    </a>
+
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+        function toggleFaq(element) {
+            const item = element.parentElement;
+            item.classList.toggle('open');
+        }
+    </script>
+</body>
+</html>
