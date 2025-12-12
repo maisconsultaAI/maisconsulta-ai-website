@@ -548,7 +548,7 @@
           }
         }
         
-        /* Floating WhatsApp button (fix desktop + mobile) */
+       /* Floating WhatsApp button (fix desktop + mobile) */
         .whatsapp-float{
           position: fixed;
           right: 24px;
@@ -567,6 +567,32 @@
         
         .whatsapp-float:hover{
           transform: scale(1.06);
+        }
+        
+        /* IMPORTANT: não deixe o ícone ocupar 100% */
+        .whatsapp-float img,
+        .whatsapp-float svg{
+          width: 60%;
+          height: 60%;
+          display: block;
+        }
+        
+        /* Mobile */
+        @media (max-width: 768px){
+          .whatsapp-float{
+            right: 16px;
+            bottom: 16px;
+            width: 44px;
+            height: 44px;
+          }
+        }
+        
+        /* Mobile pequeno */
+        @media (max-width: 380px){
+          .whatsapp-float{
+            width: 40px;
+            height: 40px;
+          }
         }
 
         /* Responsive */
