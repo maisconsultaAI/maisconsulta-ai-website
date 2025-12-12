@@ -518,10 +518,9 @@
           text-decoration: none;
         }
         
-        /* 🔥 AQUI está o ajuste principal */
         .footer-social svg {
-          width: 34px;    /* ⬅️ aumentou */
-          height: 34px;   /* ⬅️ aumentou */
+          width: 34px;    
+          height: 34px;   
           cursor: pointer;
           transition: color 0.2s ease, transform 0.2s ease;
         }
@@ -539,7 +538,7 @@
         }
         
         .footer-nvidia img {
-          height: 50px;   /* ⬅️ equilíbrio ideal */
+          height: 50px;   
           width: auto;
           display: block;
         }
@@ -621,6 +620,13 @@
             .steps-grid {
                 grid-template-columns: repeat(4, 1fr);
             }
+        }
+
+        /* FORCE NVIDIA SIZE (put at the very end of your CSS) */
+        footer .container .footer-nvidia img{
+          height: 58px !important;   /* aumente/diminua aqui */
+          width: auto !important;
+          display: block;
         }
     </style>
 </head>
