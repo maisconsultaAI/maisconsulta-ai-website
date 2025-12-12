@@ -506,8 +506,8 @@
           display: flex;
           justify-content: center;
           align-items: center;
-          gap: 1rem;
-          margin-bottom: 1.25rem;
+          gap: 1.25rem;
+          margin-bottom: 1rem;
         }
         
         .footer-social a {
@@ -518,18 +518,20 @@
           text-decoration: none;
         }
         
+        /* 🔥 AQUI está o ajuste principal */
         .footer-social svg {
-          width: 26px;
-          height: 26px;
+          width: 34px;    /* ⬅️ aumentou */
+          height: 34px;   /* ⬅️ aumentou */
           cursor: pointer;
-          transition: color 0.2s ease;
+          transition: color 0.2s ease, transform 0.2s ease;
         }
         
         .footer-social svg:hover {
           color: var(--primary);
+          transform: scale(1.08); /* micro feedback premium */
         }
         
-        /* NVIDIA badge (institucional) */
+        /* NVIDIA badge */
         .footer-nvidia {
           display: flex;
           justify-content: center;
@@ -537,11 +539,10 @@
         }
         
         .footer-nvidia img {
-          height: 44px; /* ✅ tamanho institucional correto */
+          height: 42px;   /* ⬅️ equilíbrio ideal */
           width: auto;
           display: block;
         }
-
         .whatsapp-float:hover {
             transform: scale(1.1);
         }
