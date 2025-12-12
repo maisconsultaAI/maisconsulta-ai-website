@@ -495,65 +495,81 @@
 
         /* Footer */
         footer {
-            background: var(--foreground);
-            color: var(--background);
-            padding: 3rem 1rem;
-            text-align: center;
-        }
-
-        .footer-social {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .footer-social svg {
-            width: 28px;
-            height: 28px;
-            cursor: pointer;
-            transition: color 0.2s;
-        }
-
-        .footer-social svg:hover {
-            color: var(--primary);
-        }
-
-        .footer-info {
-            font-size: 0.875rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .footer-info p {
-            margin-bottom: 0.25rem;
-        }
-
-        .footer-copy {
-            font-size: 0.875rem;
-        }
-
-        .site-footer .nvidia-badge {
-          display: inline-flex;
-          align-items: center;
-          margin-left: 12px; /* garante respiro */
+          background: var(--foreground);
+          color: var(--background);
+          padding: 3rem 1rem;
+          text-align: center;
         }
         
-        .site-footer .nvidia-badge img {
-          height: 28px;      /* ajuste fino: 24–32px costuma ficar bom */
+        /* Social + NVIDIA */
+        .footer-social {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          gap: 1rem;
+          margin-bottom: 1.5rem;
+          flex-wrap: wrap;
+        }
+        
+        /* Links */
+        .footer-social a {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          color: inherit;
+          text-decoration: none;
+        }
+        
+        /* Ícones SVG (Instagram / LinkedIn) */
+        .footer-social svg {
+          width: 28px;
+          height: 28px;
+          cursor: pointer;
+          transition: color 0.2s ease;
+          display: block;
+        }
+        
+        .footer-social svg:hover {
+          color: var(--primary);
+        }
+        
+        /* Badge NVIDIA Inception */
+        .footer-social .nvidia-badge {
+          display: inline-flex;
+          align-items: center;
+        }
+        
+        .footer-social .nvidia-badge img {
+          height: 28px;   /* alinhado com os ícones */
           width: auto;
           display: block;
         }
         
-        /* WhatsApp Float */
-        .whatsapp-float {
-            position: fixed;
-            bottom: 1.5rem;
-            right: 1.5rem;
-            width: 64px;
-            height: 64px;
-            z-index: 50;
-            transition: transform 0.2s;
+        /* Informações */
+        .footer-info {
+          font-size: 0.875rem;
+          margin-bottom: 1.5rem;
         }
+        
+        .footer-info p {
+          margin-bottom: 0.25rem;
+        }
+        
+        /* Copyright */
+        .footer-copy {
+          font-size: 0.875rem;
+          opacity: 0.85;
+        }
+                /* WhatsApp Float */
+                .whatsapp-float {
+                    position: fixed;
+                    bottom: 1.5rem;
+                    right: 1.5rem;
+                    width: 64px;
+                    height: 64px;
+                    z-index: 50;
+                    transition: transform 0.2s;
+                }
 
         .whatsapp-float:hover {
             transform: scale(1.1);
@@ -945,9 +961,9 @@
                     title="NVIDIA Inception Program"
                 >
                    <img
-                  src="./nvidia-inception-program-badge-rgb-for-screen.png"
-                  alt="NVIDIA Inception Program"
-                  loading="lazy"
+                      src="./nvidia-inception-program-badge-rgb-for-screen.svg"
+                      alt="NVIDIA Inception Program"
+                      loading="lazy" 
                     />
                 </a>
             
