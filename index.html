@@ -539,10 +539,16 @@
         }
         
         .footer-nvidia img {
-          height: 42px;   /* ⬅️ equilíbrio ideal */
+          height: 50px;   /* ⬅️ equilíbrio ideal */
           width: auto;
           display: block;
         }
+        @media (max-width: 480px) {
+          .footer-nvidia img {
+            height: 42px;
+          }
+        }
+        
         .whatsapp-float:hover {
             transform: scale(1.1);
         }
