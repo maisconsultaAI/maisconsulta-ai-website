@@ -501,17 +501,15 @@
           text-align: center;
         }
         
-        /* Social + NVIDIA */
+        /* Social icons */
         .footer-social {
           display: flex;
           justify-content: center;
           align-items: center;
           gap: 1rem;
-          margin-bottom: 1.5rem;
-          flex-wrap: wrap;
+          margin-bottom: 1.25rem;
         }
         
-        /* Links */
         .footer-social a {
           display: inline-flex;
           align-items: center;
@@ -520,56 +518,29 @@
           text-decoration: none;
         }
         
-        /* Ícones SVG (Instagram / LinkedIn) */
         .footer-social svg {
-          width: 28px;
-          height: 28px;
+          width: 26px;
+          height: 26px;
           cursor: pointer;
           transition: color 0.2s ease;
-          display: block;
         }
         
         .footer-social svg:hover {
           color: var(--primary);
         }
         
-        /* Badge NVIDIA Inception */
-        .footer-social .nvidia-badge {
-          display: inline-flex;
-          align-items: center;
-        }
-        
-        .footer-social .nvidia-badge img {
-          height: 28px;   /* alinhado com os ícones */
-          width: auto;
-          display: block;
-        }
-        
-        /* Informações */
-        .footer-info {
-          font-size: 0.875rem;
+        /* NVIDIA badge (institucional) */
+        .footer-nvidia {
+          display: flex;
+          justify-content: center;
           margin-bottom: 1.5rem;
         }
         
-        .footer-info p {
-          margin-bottom: 0.25rem;
+        .footer-nvidia img {
+          height: 44px; /* ✅ tamanho institucional correto */
+          width: auto;
+          display: block;
         }
-        
-        /* Copyright */
-        .footer-copy {
-          font-size: 0.875rem;
-          opacity: 0.85;
-        }
-                /* WhatsApp Float */
-                .whatsapp-float {
-                    position: fixed;
-                    bottom: 1.5rem;
-                    right: 1.5rem;
-                    width: 64px;
-                    height: 64px;
-                    z-index: 50;
-                    transition: transform 0.2s;
-                }
 
         .whatsapp-float:hover {
             transform: scale(1.1);
@@ -950,24 +921,22 @@
                         <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/>
                     </svg>
                 </a>
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
-                
-                <a
-                    class="nvidia-badge"
-                    href="https://www.nvidia.com/en-us/startups/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="NVIDIA Inception Program"
-                    title="NVIDIA Inception Program"
-                >
-                   <img
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>         
+            </div>
+            
+            <div class="footer-nvidia">
+                <a href="https://www.nvidia.com/en-us/startups/"
+                     target="_blank"
+                     rel="noopener noreferrer"
+                     aria-label="NVIDIA Inception Program">
+                    <img
                       src="./nvidia-inception-program-badge-rgb-for-screen.svg"
                       alt="NVIDIA Inception Program"
-                      loading="lazy" 
+                      loading="lazy"
                     />
                 </a>
-            
             </div>
+            
             <div class="footer-info">
                 <p><a href="mailto:contato@maisconsulta.ai" style="color: white; text-decoration: none;">contato@maisconsulta.ai</a></p>                
                 <p>R. João de Lacerda Soares, 31 - Sala 1419, Cond. Air Brooklin • Jardim das Acácias, São Paulo-SP • CEP 04707-010</p>
